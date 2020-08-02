@@ -39,10 +39,10 @@ class Configuration(object):
         self.MAX_FILE_MEMO = 20000
 
         # Cache and save articles run after run
-        self.memoize_articles = True
+        self.memoize_articles = False
 
         # Set this to false if you don't care about getting images
-        self.fetch_images = True
+        self.fetch_images = False
         self.image_dimension_ration = 16 / 9.0
 
         # Follow meta refresh redirect when downloading
@@ -52,10 +52,10 @@ class Configuration(object):
         self.use_meta_language = True
 
         # You may keep the html of just the main article body
-        self.keep_article_html = False
+        self.keep_article_html = True
 
         # Fail for error responses (e.g. 404 page)
-        self.http_success_only = True
+        self.http_success_only = False
 
         # English is the fallback
         self._language = 'en'
@@ -65,7 +65,7 @@ class Configuration(object):
 
         self.browser_user_agent = 'newspaper/%s' % __version__
         self.headers = {}
-        self.request_timeout = 7
+        self.request_timeout = 25
         self.proxies = {}
         self.number_threads = 10
 
