@@ -44,7 +44,7 @@ def get_html(url, config=None, response=None):
         return ''
 
 
-def get_html_2XX_only(url, config=None, response=None):
+def get_html_2XX_only(url, config=None, response=None, response_type='text'):
     """Consolidated logic for http requests from newspaper. We handle error cases:
     - Attempt to find encoding of the html by using HTTP header. Fallback to
       'ISO-8859-1' if not provided.
@@ -62,13 +62,17 @@ def get_html_2XX_only(url, config=None, response=None):
     response = requests.get(
         url=url, **get_request_kwargs(timeout, useragent, proxies, headers))
 
-    html = _get_html_from_response(response, config)
+    if response_type == 'text':
+        html = _get_html_from_response(response, config)
 
-    if config.http_success_only:
-        # fail if HTTP sends a non 2XX response
-        response.raise_for_status()
+        if config.http_success_only:
+            # fail if HTTP sends a non 2XX response
+            response.raise_for_status()
 
-    return html
+        return html
+
+    elif response_type == 'content':
+        return response.content
 
 
 def _get_html_from_response(response, config):
