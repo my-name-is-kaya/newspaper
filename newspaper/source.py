@@ -72,6 +72,7 @@ class Source(object):
         self.categories = []
         self.feeds = []
         self.articles = []
+        self.failed_article_l = []
 
         self.html = ''
         self.doc = None
@@ -364,7 +365,9 @@ class Source(object):
 
         self.is_downloaded = True
         if len(failed_articles) > 0:
-            log.warning('The following article urls failed the download: %s' %
+            self.failed_article_l = [a.url for a in failed_articles]
+
+            log.warning('The following article urls failed the download: %s. Check their existence in progress sheet.' %
                         ', '.join([a.url for a in failed_articles]))
 
     def parse_articles(self):
