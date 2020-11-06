@@ -46,13 +46,13 @@ with codecs.open('README.rst', 'r', 'utf-8') as f:
 
 
 setup(
-    name='newspaper3k',
+    name='nw_kaya',
     version='0.3.0',
     description='Simplified python article discovery & extraction.',
     long_description=readme,
     author='Lucas Ou-Yang',
     author_email='lucasyangpersonal@gmail.com',
-    url='https://github.com/codelucas/newspaper/',
+    download_url='https://github.com/my-name-is-kaya/newspaper/archive/0.1.7.tar.gz',
     packages=packages,
     include_package_data=True,
     install_requires=required,
